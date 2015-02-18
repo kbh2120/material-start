@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
-    <title>AngularJS Material App</title>
+    <title>DJ-LEVels</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
       <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
         <span class="visuallyhidden">Menu</span>
       </button>
-      <h1>AngularJS Material App</h1>
+      <h1>DJ-LEVels</h1>
     </md-toolbar>
 
     <!--
@@ -28,7 +28,7 @@
 
     <div layout="row" flex>
 
-      <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-sm')">
+      <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="$media('gt-sm')">
         <md-list>
           <md-item ng-repeat="it in avatars">
             <md-item-content>
@@ -40,12 +40,7 @@
           </md-item>
         </md-list>
       </md-sidenav>
-
-      <!--
-          Use `flex` [below] to have the content area
-          fill the available horizontal display area on the right side
-      -->
-
+  
       <div layout="column" flex class="content-wrapper" id="content">
         <md-content layout="column" flex class="md-padding">
             <span class="{{selected.classname}} avatar" role="img" aria-label="{{selected.name}}"></span>
@@ -56,7 +51,29 @@
             </md-button>
         </md-content>
       </div>
+      
+      <md-sidenav class="md-sidenav-right md-whiteframe-z1" md-component-id="right" md-is-locked-open="$media('gt-sm')">
+        <md-list>
+          <md-item ng-repeat="it in avatars">
+            <md-item-content>
+              <md-button ng-click="selectAvatar(it)" ng-class="{'selected' : it === selected }">
+                <span class="{{it.classname}} avatar"></span>
+                {{it.name}}
+              </md-button>
+            </md-item-content>
+          </md-item>
+        </md-list>
+      </md-sidenav>
+      <!--
+          Use `flex` [below] to have the content area
+          fill the available horizontal display area on the right side
+      -->
+
+      
     </div>
+
+
+
 
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-route/angular-route.js"></script>
